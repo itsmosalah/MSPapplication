@@ -48,6 +48,7 @@ class MainLayout extends StatelessWidget {
         unselectedItemColor: Colors.blueGrey,
         selectedItemColor: selectedItemColors[index], //look at constant file
         onTap: function,
+        currentIndex: index,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(
