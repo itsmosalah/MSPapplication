@@ -5,6 +5,7 @@ import 'layout/main_layout.dart';
 
 void main(){
 
+  runApp(const MyApp());
 
 }
 

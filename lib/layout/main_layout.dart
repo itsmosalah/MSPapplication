@@ -14,11 +14,6 @@ class MainLayout extends StatelessWidget {
       create: (context) => LayoutCubit(),
       child: BlocConsumer<LayoutCubit, LayoutState>(
         listener: (context, state) {
-          LayoutCubit model = LayoutCubit.get(context);
-
-          if (state is LayoutInitial) {
-            model.initialState();
-          }
         },
         builder: (context, state) {
           LayoutCubit model = LayoutCubit.get(context);

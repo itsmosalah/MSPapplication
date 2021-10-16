@@ -7,12 +7,7 @@ class LayoutCubit extends Cubit<LayoutState> {
 
   static LayoutCubit get(context) => BlocProvider.of(context);
 
-  late int currentIndex;
-
-
-  void initialState(){
-    currentIndex = 0;
-  }
+  int currentIndex = 0;
 
   void changeBottomNavigationBar({
   required int index,
