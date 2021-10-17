@@ -1,1 +1,1 @@
-const crew = "/search/events";
+const events = "search/events";
