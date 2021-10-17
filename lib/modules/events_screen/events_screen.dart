@@ -28,10 +28,13 @@ class EventsScreen extends StatelessWidget {
             );
           }
           else{
-            return ListView.separated(
-                itemBuilder: (context,index)=>eventWidget(model: model.eventModel[index], context: context),
-                separatorBuilder:(context,index)=>verticalDivider(),
-                itemCount: model.eventModel.length
+            return Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: ListView.separated(
+                  itemBuilder: (context,index)=>eventWidget(model: model.eventModel[index], context: context),
+                  separatorBuilder:(context,index)=>verticalDivider(),
+                  itemCount: model.eventModel.length
+              ),
             );
           }
         },
@@ -46,89 +49,115 @@ class EventsScreen extends StatelessWidget {
 }){
     return Container(
       width: double.infinity,
-      height: 300.0,
+      height: 150.0,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
+          borderRadius: BorderRadius.circular(10.0),
+          gradient: LinearGradient(
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
           colors: [
-            Colors.greenAccent,
+            Colors.greenAccent.shade400,
             Colors.green.shade400,
             Colors.green.shade700,
-            Colors.green.shade900,
           ],
         )
       ),
-      child: Row(
-        children: [
-          SizedBox(
-            width: 250,
-            height: 250,
-            child: Image(
-              image: NetworkImage(model.img),
-              errorBuilder:(context,object,stackTrace) {
-                return Image.asset("assets/images/MSP LOGO WHITE.png");
-              },
-              fit: BoxFit.cover,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10.0),
+        child: Row(
+          children: [
+            SizedBox(
+              width: 150,
+              height: 150,
+              child: Image(
+                image: NetworkImage(model.img),
+                errorBuilder:(context,object,stackTrace) {
+                  return Image.asset("assets/images/MSP LOGO WHITE.png");
+                },
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          const Spacer(),
-          Expanded(
-            child: Column(
-              children: [
-                Text(
-                  model.name,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                Text(
-                  model.description,
-                  maxLines: 4,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.subtitle1,
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                model.fees == 0 ? Text(
-                  "Free",
-                  style: Theme.of(context).textTheme.subtitle1,
-                ):Text(
-                  "Fees: ${model.fees} EGP",
-                  style: Theme.of(context).textTheme.subtitle2,
-                ),
-              ],
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    model.name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.headline6!.copyWith(
+                      color: Colors.white
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  Text(
+                    model.description,
+                    maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                        color: Colors.white
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  model.fees == "0" ? Text(
+                    "Free",
+                    style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                        color: Colors.white
+                    ),
+                  ):Text(
+                    "Fees:${model.fees}LE",
+                    style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                        color: Colors.white
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-          const Spacer(),
-          Column(
-            children: [
-              Text(
-                  "${DateFormat.d(model.createdAt)}",
-                style: Theme.of(context).textTheme.headline3,
+            const Spacer(),
+            Container(
+              margin: const EdgeInsets.only(
+                right: 10.0
               ),
-              const SizedBox(
-                height: 10.0,
-              ),
-              Text(
-                "${DateFormat.m(model.createdAt)}",
-                style: Theme.of(context).textTheme.subtitle2,
-              ),
-              const SizedBox(
-                height: 5.0,
-              ),
-              Text(
-                "${DateFormat.Hm(model.createdAt)}",
-                style: Theme.of(context).textTheme.subtitle2,
-              ),
-            ],
-          ),
 
-        ],
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                      "${DateTime.parse(model.createdAt).day}",
+                    style: Theme.of(context).textTheme.headline3!.copyWith(
+                        color: Colors.white
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  Text(
+                    "${DateTime.parse(model.createdAt).month}",
+                    style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                        color: Colors.white
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 5.0,
+                  ),
+                  Text(
+                    "${DateTime.parse(model.createdAt).hour}:00",
+                    style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                        color: Colors.white
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+          ],
+        ),
       ),
     );
   }

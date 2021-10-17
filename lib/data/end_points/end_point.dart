@@ -1,1 +1,1 @@
-const events = "search/events";
+const events = "search/event";

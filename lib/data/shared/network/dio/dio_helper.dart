@@ -12,6 +12,7 @@ class DioHelper{
   static Future<Response> getData({
     required String type,
   }) async {
+    print(dio.options.baseUrl+type);
     return await dio.get(
         dio.options.baseUrl+type,
     );

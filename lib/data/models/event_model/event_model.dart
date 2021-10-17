@@ -8,7 +8,7 @@ class EventModel{
   late String time;
   late String date;
   late String description;
-  late int fees;
+  late String fees;
   late String location;
 
 
