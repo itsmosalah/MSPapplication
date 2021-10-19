@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:msp_ainshams/data/models/event_model/event_model.dart';
 import 'package:msp_ainshams/data/shared/constants/constants.dart';
 import 'package:msp_ainshams/modules/event_details_screen/event_details_screen.dart';
@@ -141,7 +142,7 @@ class EventsScreen extends StatelessWidget {
           height: 5.0,
         ),
         Text(
-          "${DateTime.parse(model.createdAt).hour}:00",
+          DateFormat.Hm().format(DateTime.parse(model.createdAt)),
           style: Theme.of(context)
               .textTheme
               .subtitle2!

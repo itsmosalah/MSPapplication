@@ -70,7 +70,7 @@ const List<String>committeesImages=[
 const List<String> socialNetworkImages =[
     "https://www.channelfutures.com/files/2021/06/Facebook-1.png",
     "https://www.looplink.me/public/uploads/social_icons/icon7.png",
-    "",
+    "https://drive.uqu.edu.sa/_/smqarni/images/youtube.png",
 ];
 
 const List<String> socialMediaLinks = [
@@ -112,7 +112,28 @@ String getMonthName({required int month}){
     }
 }
 
-
+Color getCommitteeColor({required String committee}){
+    switch(committee){
+        case "Flutter":
+            return committeesColor[0];
+        case "Android":
+            return committeesColor[1];
+        case "Machine Learning":
+            return committeesColor[2];
+        case  "Cyber Security":
+            return committeesColor[3];
+        case  "Game":
+            return committeesColor[4];
+        case "Web":
+            return committeesColor[5];
+        case "Data Science":
+            return committeesColor[6];
+        case  "Software Testing":
+            return committeesColor[7];
+        default:
+            return committeesColor[0];
+    }
+}
 
 /*Constant Widgets*/
 Widget customLoadingData({required Color color})=> Center(
