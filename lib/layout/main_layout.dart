@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:msp_ainshams/data/shared/constants/constants.dart';
 import 'package:msp_ainshams/layout/cubit/layout_state.dart';
+import 'package:msp_ainshams/modules/events_screen/cubit/events_cubit.dart';
+import 'package:msp_ainshams/modules/projects_screen/cubit/projects_cubit.dart';
 
 import 'cubit/layout_cubit.dart';
 
@@ -10,8 +12,12 @@ class MainLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => LayoutCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context)=>LayoutCubit()),
+        BlocProvider(create: (context)=>EventsCubit()..getAllEvents()),
+        BlocProvider(create: (context)=>ProjectsCubit()..getProjectsFromServer())
+    ],
       child: BlocConsumer<LayoutCubit, LayoutState>(
         listener: (context, state) {
         },

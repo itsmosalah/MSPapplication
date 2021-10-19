@@ -12,42 +12,39 @@ class EventsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => EventsCubit()..getAllEvents(),
-      child: BlocConsumer<EventsCubit, EventsState>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          EventsCubit model = EventsCubit.get(context);
+    return BlocConsumer<EventsCubit, EventsState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        EventsCubit model = EventsCubit.get(context);
 
-          if (state is EventLoadingDataFromServer) {
-            return customLoadingData(
-              color: Colors.teal
-            );
-          } else if (state is EventsGetDataError) {
-            return getErrorFromServer(
-              context: context,
-            );
-          } else {
-            return  Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: ListView.separated(
-                    physics: const BouncingScrollPhysics(),
-                    itemBuilder: (context, index) => InkWell(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>EventDetailsScreen(model: model.eventModel[index],)));
-                      },
-                      child: Hero(
-                        tag:model.eventModel[index].id,
-                        child: eventWidget(
-                            model: model.eventModel[index], context: context),
-                      ),
+        if (state is EventLoadingDataFromServer) {
+          return customLoadingData(
+            color: Colors.teal
+          );
+        } else if (state is EventsGetDataError) {
+          return getErrorFromServer(
+            context: context,
+          );
+        } else {
+          return  Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: ListView.separated(
+                  physics: const BouncingScrollPhysics(),
+                  itemBuilder: (context, index) => InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>EventDetailsScreen(model: model.eventModel[index],)));
+                    },
+                    child: Hero(
+                      tag:model.eventModel[index].id,
+                      child: eventWidget(
+                          model: model.eventModel[index], context: context),
                     ),
-                    separatorBuilder: (context, index) => verticalDivider(),
-                    itemCount: model.eventModel.length),
-              );
-          }
-        },
-      ),
+                  ),
+                  separatorBuilder: (context, index) => verticalDivider(),
+                  itemCount: model.eventModel.length),
+            );
+        }
+      },
     );
   }
 

@@ -31,6 +31,41 @@ const List<Color> selectedItemColors=[
     Colors.pinkAccent,
 ];
 
+List<Color>committeesColor =[
+  Colors.blueAccent.shade400,
+  Colors.lightGreen.shade900,
+  Colors.blueAccent.shade700,
+  Colors.black,
+  Colors.cyan.shade400,
+  Colors.blueGrey.shade100,
+  Colors.blueAccent.shade100,
+  Colors.tealAccent.shade400
+];
+
+/*Const Committees names and images from assets*/
+const List<String> committeesName=[
+    "Flutter",
+    "Android",
+    "Machine Learning",
+    "Cyber Security",
+    "Game",
+    "Web",
+    "Data Science",
+    "Software Testing"
+];
+
+const List<String>committeesImages=[
+    "assets/logos/Flutter-Logo.png",
+    "assets/logos/android-logo.png",
+    "assets/logos/ml-logo.png",
+    "assets/logos/Security-logo.png",
+    "assets/logos/Game-logo.png",
+    "assets/logos/web-logo.png",
+    "assets/logos/DataScience-logo.png",
+    "assets/logos/testing-logo.jpg",
+];
+
+
 /*Constant social apps images*/
 const List<String> socialNetworkImages =[
     "https://www.channelfutures.com/files/2021/06/Facebook-1.png",
