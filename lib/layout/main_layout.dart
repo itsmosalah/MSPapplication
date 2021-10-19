@@ -21,14 +21,12 @@ class MainLayout extends StatelessWidget {
           int indexOfBottomNavBar = model.currentIndex;
 
           return Scaffold(
-            backgroundColor: Colors.white,
             appBar: AppBar(
               titleSpacing: 20.0,
               title: customTitle(
                 model: model,
               ),
               elevation: 0.0,
-              backgroundColor: Colors.white,
             ),
             bottomNavigationBar: customBottomNavBar(
                 index: indexOfBottomNavBar, //get the index
@@ -45,35 +43,30 @@ class MainLayout extends StatelessWidget {
   Widget customBottomNavBar({required int index, required dynamic function}) =>
       BottomNavigationBar(
         elevation: 0.0,
-        backgroundColor: Colors.white,
         unselectedItemColor: Colors.blueGrey,
         selectedItemColor: selectedItemColors[index], //look at constant file
         onTap: function,
         currentIndex: index,
         items: const [
           BottomNavigationBarItem(
-            backgroundColor: Colors.white,
             icon: Icon(
               Icons.event,
             ),
             label: "",
           ),
           BottomNavigationBarItem(
-            backgroundColor: Colors.white,
             icon: Icon(
               Icons.work,
             ),
             label: "",
           ),
           BottomNavigationBarItem(
-            backgroundColor: Colors.white,
             icon: Icon(
               Icons.group,
             ),
             label: "",
           ),
           BottomNavigationBarItem(
-            backgroundColor: Colors.white,
             icon: Icon(
               Icons.info,
             ),
@@ -86,10 +79,5 @@ class MainLayout extends StatelessWidget {
     required model,
     })=>Text(
       titles[model.currentIndex],
-      style: const TextStyle(
-          color: Colors.black,
-          fontSize: 24.0,
-          fontWeight: FontWeight.bold,
-      ),
     );
 }

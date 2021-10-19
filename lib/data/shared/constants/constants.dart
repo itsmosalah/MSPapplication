@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:msp_ainshams/data/shared/network/web_view/web_view.dart';
 import 'package:msp_ainshams/modules/about_us_screen/about_us_screen.dart';
 import 'package:msp_ainshams/modules/crew_screen/crew_screen.dart';
 import 'package:msp_ainshams/modules/events_screen/events_screen.dart';
@@ -24,18 +25,65 @@ const List<String>titles = [
 
 /*Selected Item Color in bottom Nav Bar*/
 const List<Color> selectedItemColors=[
-    Colors.green,
+    Colors.teal,
     Colors.blue,
     Colors.red,
     Colors.pinkAccent,
 ];
 
+/*Constant social apps images*/
+const List<String> socialNetworkImages =[
+    "https://www.channelfutures.com/files/2021/06/Facebook-1.png",
+    "https://www.looplink.me/public/uploads/social_icons/icon7.png",
+    "",
+];
+
+const List<String> socialMediaLinks = [
+    "https://www.facebook.com/ASUTC",
+    "https://www.linkedin.com/company/msp-tech-club-asu/",
+    "",
+];
+
+/*Constant Functions*/
+
+String getMonthName({required int month}){
+    switch(month){
+        case 1:
+            return "Jan";
+        case 2:
+            return "Feb";
+        case 3:
+            return "Mar";
+        case 4:
+            return "Apr";
+        case 5:
+            return "May";
+        case 6:
+            return "Jun";
+        case 7:
+            return "Jul";
+        case 8:
+            return "Aug";
+        case 9:
+            return "Sep";
+        case 10:
+            return "Oct";
+        case 11:
+            return "Nov";
+        case 12:
+            return "Dec";
+        default:
+            return "00";
+    }
+}
 
 
 
 /*Constant Widgets*/
-Widget customLoadingData()=>const Center(
-    child: CircularProgressIndicator(),
+Widget customLoadingData({required Color color})=> Center(
+    child: CircularProgressIndicator(
+        color: color,
+    ),
 );
 
 Widget getErrorFromServer({
@@ -60,4 +108,46 @@ Widget getErrorFromServer({
     ),
 );
 
+Widget buildSocialMediaButtons({
+    required String imageLink,
+    required String  url,
+    required context
+})=> InkWell(
+    onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>WebViewHelper(
+            url: url,
+        )));
+    },
+    child: CircleAvatar(
+        backgroundImage: NetworkImage(imageLink),
+        radius: 24.0,
+        backgroundColor: Colors.transparent,
+    ),
+);
+
+Widget buildSlogan({required context})=> Column(
+    children: [
+        const CircleAvatar(
+            radius: 50.0,
+            backgroundImage: AssetImage("assets/images/MSP LOGO bright.png"),
+            backgroundColor: Colors.transparent,
+        ),
+        verticalDivider(),
+        Text(
+            'Knowledge Shared is Knowledge²',
+            style: Theme.of(context).textTheme.bodyText1,
+        ),
+        verticalDivider(),
+        Text(
+            "MSP Tech Club - ASU",
+            style: Theme.of(context).textTheme.subtitle1,
+        ),
+        verticalDivider(),
+
+    ],
+);
+
+
 Widget verticalDivider()=>const SizedBox(height: 10.0,);
+
+Widget horizontalDivider()=>const SizedBox(width: 10.0,);

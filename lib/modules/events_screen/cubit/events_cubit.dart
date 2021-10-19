@@ -25,10 +25,8 @@ class EventsCubit extends Cubit<EventsState> {
       value.data.forEach((element){
         eventModel.add(EventModel.fromJson(element));
       });
-      print(eventModel[0].name);
       emit(EventsGetDataSuccessFully());
     }).catchError((error){
-      print(error);
       emit(EventsGetDataError());
     });
   }
