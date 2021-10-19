@@ -76,7 +76,7 @@ const List<String> socialNetworkImages =[
 const List<String> socialMediaLinks = [
     "https://www.facebook.com/ASUTC",
     "https://www.linkedin.com/company/msp-tech-club-asu/",
-    "",
+    "https://www.youtube.com/channel/UCx4RR5PPCwfU_Om_9pAwaCA/featured",
 ];
 
 /*Constant Functions*/
