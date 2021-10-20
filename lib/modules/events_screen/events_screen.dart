@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:msp_ainshams/data/models/event_model/event_model.dart';
 import 'package:msp_ainshams/data/shared/constants/constants.dart';
-import 'package:msp_ainshams/modules/event_details_screen/event_details_screen.dart';
 
 import 'cubit/events_cubit.dart';
+import 'event_details_screen/event_details_screen.dart';
 
 class EventsScreen extends StatelessWidget {
   const EventsScreen({Key? key}) : super(key: key);

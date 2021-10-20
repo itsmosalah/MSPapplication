@@ -5,8 +5,8 @@ import 'package:msp_ainshams/modules/projects_screen/shared_widgets/shared_widge
 
 // ignore: must_be_immutable
 class SpecificCommitteeScreen extends StatelessWidget {
-  late List<ProjectModel> model;
-  late String committeeName;
+  List<ProjectModel> model;
+  String committeeName;
   SpecificCommitteeScreen({Key? key,required this.model,required this.committeeName}) : super(key: key);
 
   @override
