@@ -29,6 +29,7 @@ Widget projectDetails(
         Text(
           projectTitle,
           style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                fontSize: 14.0,
                 color: committee=="Web"?Colors.black:Colors.white,
               ),
           maxLines: 2,
@@ -38,6 +39,7 @@ Widget projectDetails(
         Text(
           committee,
           style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                fontSize: 12.0,
                 color: committee=="Web"?Colors.black:Colors.white,
               ),
           maxLines: 1,
@@ -104,7 +106,9 @@ Widget projectContainer({required model, required context}) => InkWell(
             child: Row(
               children: [
                 projectPhoto(imageUrl: model.photo),
-                horizontalDivider(),
+                const SizedBox(
+                  width: 25.0,
+                ),
                 Expanded(
                   child: projectDetails(
                     context: context,
@@ -112,7 +116,7 @@ Widget projectContainer({required model, required context}) => InkWell(
                     committee: model.team,
                   ),
                 ),
-                const Spacer(),
+                horizontalDivider(),
                 projectDateDetails(context: context, model: model),
               ],
             ),
