@@ -1,7 +1,6 @@
 import'package:flutter/material.dart';
 import 'package:msp_ainshams/data/shared/styles/themes/themes.dart';
-
-import 'layout/main_layout.dart';
+import 'package:msp_ainshams/modules/splash_screen/splash_screen.dart';
 
 
 void main(){
@@ -23,7 +22,7 @@ class MyApp extends StatelessWidget{
       darkTheme: darkTheme,
       theme:lightTheme,
       themeMode: ThemeMode.light,
-      home: const MainLayout(),
+      home: const SplashScreen(),
 
     );
 

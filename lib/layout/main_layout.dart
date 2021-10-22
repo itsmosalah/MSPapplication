@@ -34,6 +34,17 @@ class MainLayout extends StatelessWidget {
               ),
               elevation: 0.0,
             ),
+            floatingActionButton: FloatingActionButton(
+              onPressed: (){
+
+              },
+              backgroundColor: Colors.black,
+              child: const Image(
+                image: AssetImage(
+                    "assets/images/MSP LOGO WHITE.png"
+                ),
+              ),
+            ),
             bottomNavigationBar: customBottomNavBar(
                 index: indexOfBottomNavBar, //get the index
                 function: (int index) {

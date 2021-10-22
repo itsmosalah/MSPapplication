@@ -70,7 +70,7 @@ class ProjectDetailsScreen extends StatelessWidget {
                                   left: 10.0
                               ),
                               child: Text(
-                                model.description*50,
+                                model.description,
                                 style: TextStyle(
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.w600,
