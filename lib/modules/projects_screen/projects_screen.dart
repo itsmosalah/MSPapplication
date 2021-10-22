@@ -111,21 +111,21 @@ class ProjectsScreen extends StatelessWidget {
     required ProjectsCubit model
   }){
     switch(index){
-      case 1:
+      case 0:
         return model.flutterProjects;
-      case 2:
+      case 1:
         return model.androidProjects;
-      case 3:
+      case 2:
         return model.machineLearningProjects;
-      case  4:
+      case  3:
         return model.securityProjects;
-      case  5:
+      case  4:
         return model.gameProjects;
-      case 6:
+      case 5:
         return model.webProjects;
-      case 7:
+      case 6:
         return model.dataScienceProjects;
-      case  8:
+      case  7:
         return model.testingProjects;
       default:
         return [];

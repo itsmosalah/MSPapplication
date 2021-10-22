@@ -29,16 +29,16 @@ Widget projectDetails(
         Text(
           projectTitle,
           style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                color: Colors.white,
+                color: committee=="Web"?Colors.black:Colors.white,
               ),
-          maxLines: 1,
+          maxLines: 2,
           overflow: TextOverflow.ellipsis,
         ),
         verticalDivider(),
         Text(
           committee,
           style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                color: Colors.white,
+                color: committee=="Web"?Colors.black:Colors.white,
               ),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
@@ -58,7 +58,7 @@ Widget projectDateDetails({required model, required context}) => Container(
             style: Theme.of(context)
                 .textTheme
                 .headline3!
-                .copyWith(color: Colors.white),
+                .copyWith(color: model.team=="Web"?Colors.black:Colors.white),
           ),
           const SizedBox(
             height: 5.0,
@@ -68,7 +68,7 @@ Widget projectDateDetails({required model, required context}) => Container(
             style: Theme.of(context)
                 .textTheme
                 .subtitle2!
-                .copyWith(color: Colors.white),
+                .copyWith(color: model.team=="Web"?Colors.black:Colors.white),
           ),
           const SizedBox(
             height: 5.0,
@@ -78,7 +78,7 @@ Widget projectDateDetails({required model, required context}) => Container(
             style: Theme.of(context)
                 .textTheme
                 .subtitle2!
-                .copyWith(color: Colors.white),
+                .copyWith(color: model.team=="Web"?Colors.black:Colors.white),
           ),
         ],
       ),
