@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:msp_ainshams/data/shared/constants/constants.dart';
@@ -10,7 +13,7 @@ Widget projectPhoto({required String imageUrl}) => Container(
           const BoxDecoration(shape: BoxShape.circle, color: Colors.black),
       child: Image(
         width: 100,
-        image: NetworkImage(imageUrl),
+        image: MemoryImage(Uint8List.fromList(utf8.encode(imageUrl))),
         errorBuilder: (context, object, stackTrace) {
           return Image.asset("assets/images/MSP LOGO WHITE.png");
         },

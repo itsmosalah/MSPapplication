@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:msp_ainshams/data/models/project_model/project_model.dart';
 import 'package:msp_ainshams/data/shared/constants/constants.dart';
@@ -25,7 +28,7 @@ class ProjectDetailsScreen extends StatelessWidget {
             child: Container(
               color: Colors.grey,
               child: Image(
-                image: NetworkImage(model.photo),
+                image: MemoryImage(Uint8List.fromList(utf8.encode(model.photo))),
                 errorBuilder: (context, object, stackTrace) {
                   return Image.asset("assets/images/MSP LOGO WHITE.png");
                 },

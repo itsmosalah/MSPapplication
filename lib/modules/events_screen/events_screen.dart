@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -57,7 +60,7 @@ class EventsScreen extends StatelessWidget {
           borderRadius: BorderRadius.circular(5.0),
         ),
         child: Image(
-          image: NetworkImage(imageUrl),
+          image: MemoryImage(Uint8List.fromList(utf8.encode(imageUrl))),
           errorBuilder: (context, object, stackTrace) {
             return Image.asset("assets/images/MSP LOGO WHITE.png");
           },
