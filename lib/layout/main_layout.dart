@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:msp_ainshams/data/shared/constants/constants.dart';
+import 'package:msp_ainshams/data/shared/cubit/app_cubit.dart';
+import 'package:msp_ainshams/data/shared/widgets/widgets.dart';
 import 'package:msp_ainshams/layout/cubit/layout_state.dart';
 import 'package:msp_ainshams/modules/events_screen/cubit/events_cubit.dart';
 import 'package:msp_ainshams/modules/projects_screen/cubit/projects_cubit.dart';
@@ -14,13 +16,13 @@ class MainLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context)=>LayoutCubit()),
-        BlocProvider(create: (context)=>EventsCubit()..getAllEvents()),
-        BlocProvider(create: (context)=>ProjectsCubit()..getProjectsFromServer())
-    ],
+        BlocProvider(create: (context) => LayoutCubit()),
+        BlocProvider(create: (context) => EventsCubit()..getAllEvents()),
+        BlocProvider(
+            create: (context) => ProjectsCubit()..getProjectsFromServer()),
+      ],
       child: BlocConsumer<LayoutCubit, LayoutState>(
-        listener: (context, state) {
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           LayoutCubit model = LayoutCubit.get(context);
 
@@ -34,21 +36,26 @@ class MainLayout extends StatelessWidget {
               ),
               elevation: 0.0,
             ),
-            floatingActionButton: FloatingActionButton(
-              onPressed: (){
-
+            drawer: BlocConsumer<AppCubit, AppState>(
+              listener: (context, state) {
               },
+              builder: (context, state) {
+                return customDrawer(context: context);
+              },
+            ),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {},
               backgroundColor: Colors.black,
               child: const Image(
-                image: AssetImage(
-                    "assets/images/MSP LOGO WHITE.png"
-                ),
+                image: AssetImage("assets/images/MSP LOGO WHITE.png"),
               ),
             ),
             bottomNavigationBar: customBottomNavBar(
                 index: indexOfBottomNavBar, //get the index
                 function: (int index) {
-                  model.changeBottomNavigationBar(index: index); //function to change the index of bottom navigation bar
+                  model.changeBottomNavigationBar(
+                      index:
+                          index); //function to change the index of bottom navigation bar
                 }),
             body: screens[indexOfBottomNavBar],
           );
@@ -92,9 +99,10 @@ class MainLayout extends StatelessWidget {
         ],
       );
 
-    Widget customTitle({
+  Widget customTitle({
     required model,
-    })=>Text(
-      titles[model.currentIndex],
-    );
+  }) =>
+      Text(
+        titles[model.currentIndex],
+      );
 }
