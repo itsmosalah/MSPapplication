@@ -41,6 +41,7 @@ dependencies:
   webview_flutter: ^2.1.1
   carousel_slider:
   shared_preferences:
+  font_awesome_flutter: ^9.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

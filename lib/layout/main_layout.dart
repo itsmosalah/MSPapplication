@@ -29,13 +29,13 @@ class MainLayout extends StatelessWidget {
           int indexOfBottomNavBar = model.currentIndex;
 
           return Scaffold(
-            appBar: AppBar(
+            appBar: model.currentIndex!=3? AppBar(
               titleSpacing: 20.0,
               title: customTitle(
                 model: model,
               ),
               elevation: 0.0,
-            ),
+            ):null,
             drawer: BlocConsumer<AppCubit, AppState>(
               listener: (context, state) {
               },

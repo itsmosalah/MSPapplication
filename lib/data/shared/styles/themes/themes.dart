@@ -23,9 +23,9 @@ ThemeData darkTheme = ThemeData(
     ),
   ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
-    type: BottomNavigationBarType.fixed,
-    elevation: 20.0,
-    backgroundColor: bgDarkColor
+      type: BottomNavigationBarType.fixed,
+      elevation: 20.0,
+      backgroundColor: bgDarkColor
   ),
   textTheme: const TextTheme(
     headline1: TextStyle(
@@ -33,6 +33,20 @@ ThemeData darkTheme = ThemeData(
         fontSize: 36.0,
         fontWeight: FontWeight.bold,
         fontFamily: 'RailWay'
+    ),
+    headline2: TextStyle(
+        color: Colors.white60,
+        fontSize: 13.0,
+        fontWeight: FontWeight.bold,
+        fontFamily: 'RailWay',
+        letterSpacing: 1.5
+    ),
+    headline3: TextStyle(
+        color: Colors.white,
+        fontSize: 26.0,
+        fontWeight: FontWeight.bold,
+        fontFamily: 'RailWay',
+        letterSpacing: 1.5
     ),
     bodyText1: TextStyle(
       fontSize: 18.0,
@@ -94,6 +108,20 @@ ThemeData lightTheme = ThemeData(
       fontWeight: FontWeight.w600,
       color: Colors.black,
       fontFamily: 'RailWay',
+    ),
+    headline2: TextStyle(
+        color: Colors.black54,
+        fontSize: 13.0,
+        fontWeight: FontWeight.bold,
+        fontFamily: 'RailWay',
+        letterSpacing: 1.5
+    ),
+    headline3: TextStyle(
+        color: Colors.black,
+        fontSize: 26.0,
+        fontWeight: FontWeight.bold,
+        fontFamily: 'RailWay',
+        letterSpacing: 1.5
     ),
     subtitle1: TextStyle(
       fontSize: 14.0,
