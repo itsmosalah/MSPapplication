@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:msp_ainshams/data/models/project_model/project_model.dart';
+import 'package:msp_ainshams/data/models/crew_model/crew_model.dart';
 import 'package:msp_ainshams/data/shared/constants/constants.dart';
-import 'package:msp_ainshams/modules/projects_screen/shared_widgets/shared_widgets.dart';
+import 'package:msp_ainshams/modules/crew_screen/shared_widgets/shared_widgets.dart';
 
 // ignore: must_be_immutable
-class SpecificCommitteeScreen extends StatelessWidget {
-  List<ProjectModel> model;
+class SpecificCrewScreen extends StatelessWidget {
+  List<CrewModel> model;
   String committeeName;
-  SpecificCommitteeScreen({Key? key,required this.model,required this.committeeName}) : super(key: key);
+  SpecificCrewScreen({Key? key,required this.model,required this.committeeName}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +27,8 @@ class SpecificCommitteeScreen extends StatelessWidget {
   }
 
   Widget builderForThisScreen({
-  required context,
-}){
+    required context,
+  }){
     if(model.isEmpty){
       return Center(
         child: Text(
@@ -41,7 +41,7 @@ class SpecificCommitteeScreen extends StatelessWidget {
       return Column(
         children: [
           Text(
-            "All Projects",
+            "Crew",
             style: Theme.of(context).textTheme.bodyText1,
           ),
           const SizedBox(
@@ -51,7 +51,7 @@ class SpecificCommitteeScreen extends StatelessWidget {
           Expanded(
             child: ListView.separated(
                 physics: const BouncingScrollPhysics(),
-                itemBuilder: (context,index)=>projectContainer(
+                itemBuilder: (context,index)=>crewContainer(
                   context: context,
                   model: model[index],
                 ),

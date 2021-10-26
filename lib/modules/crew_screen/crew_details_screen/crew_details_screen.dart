@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:msp_ainshams/data/models/project_model/project_model.dart';
+import 'package:msp_ainshams/data/models/crew_model/crew_model.dart';
 import 'package:msp_ainshams/data/shared/constants/constants.dart';
-import 'package:msp_ainshams/data/shared/network/web_view/web_view.dart';
+
 
 // ignore: must_be_immutable
-class ProjectDetailsScreen extends StatelessWidget {
-  late ProjectModel model;
-  ProjectDetailsScreen({Key? key,required this.model}) : super(key: key);
+class CrewDetailsScreen extends StatelessWidget {
+  late CrewModel model;
+  CrewDetailsScreen({Key? key,required this.model}) : super(key: key);
 
- buildSliverAppBar({required context}) {
+
+  List<String> modelData=[];
+  List<IconData>icons=[
+    Icons.person,
+    Icons.work_outlined,
+    Icons.star,
+    Icons.mail,
+    Icons.phone
+  ];
+  buildSliverAppBar({required context}) {
     return SliverAppBar(
       expandedHeight: 400,
       pinned: true,
@@ -25,7 +34,7 @@ class ProjectDetailsScreen extends StatelessWidget {
             child: Container(
               color: Colors.grey,
               child: Image(
-                image: NetworkImage(model.photo),
+                image: NetworkImage(model.img),
                 errorBuilder: (context, object, stackTrace) {
                   return Image.asset("assets/images/MSP LOGO WHITE.png");
                 },
@@ -38,6 +47,8 @@ class ProjectDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    modelData = fillModelData();
 
     return Scaffold(
       body: SafeArea(
@@ -55,64 +66,75 @@ class ProjectDetailsScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        Row(
                           children: [
+                            Icon(
+                              icons[0],
+                              color: Colors.grey,
+                            ),
+                            horizontalDivider(),
                             Text(
-                              "Description",
+                              modelData[0],
                               style: Theme.of(context).textTheme.bodyText1,
                             ),
-                            const SizedBox(
-                              height: 5.0,
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(
-                                  left: 10.0
-                              ),
-                              child: Text(
-                                model.description,
-                                style: TextStyle(
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.grey.shade400,
-                                    height: 1.3,
-                                    fontFamily: 'RailWay',
-                                ),
-                            ),
-                            )
                           ],
                         ),
                         const SizedBox(
-                          height: 50.0,
+                          height:25.0
                         ),
-                        Text(
-                          'Committee: '+model.team,
-                          style: Theme.of(context).textTheme.bodyText1,
+                        Row(
+                          children: [
+                            Icon(
+                              icons[1],
+                              color: Colors.grey,
+                            ),
+                            horizontalDivider(),
+                            Text(
+                              modelData[1],
+                              style: Theme.of(context).textTheme.bodyText1,
+                            ),
+                          ],
                         ),
                         const SizedBox(
-                          height: 15.0,
+                            height:25.0
                         ),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Project Link',
-                                style: Theme.of(context).textTheme.subtitle1,
-                              ),
-                              const SizedBox(
-                                height: 10.0,
-                              ),
-                              buildProjectLink(
-                                  url: model.link,
-                                  context: context
-                              ),
-                            ],
-                          ),
+                        Row(
+                          children: [
+                            Icon(
+                              icons[2],
+                              color: Colors.grey,
+                            ),
+                            horizontalDivider(),
+                            Text(
+                              modelData[2],
+                              style: Theme.of(context).textTheme.bodyText1,
+                            ),
+                          ],
                         ),
+
+                        const SizedBox(
+                            height:25.0
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              icons[4],
+                              color: Colors.grey,
+                            ),
+                            horizontalDivider(),
+                            Text(
+                              modelData[4],
+                              style: Theme.of(context).textTheme.bodyText1,
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                            height:50.0
+                        ),
+
                       ],
                     ),
+
                   ),
                   const SizedBox(
                     height: 50.0,
@@ -174,6 +196,9 @@ class ProjectDetailsScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+                  const SizedBox(
+                    height: 100.0,
+                  ),
                 ],
               ),
             ),
@@ -183,20 +208,33 @@ class ProjectDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget buildProjectLink({
-    required String  url,
-    required context
-  })=> InkWell(
-    onTap: (){
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>WebViewHelper(
-        url: url,
-      )));
-    },
-    child: const CircleAvatar(
-      backgroundImage: NetworkImage("https://icons-for-free.com/iconfiles/png/512/git+github+icon-1320191654571298174.png"),
-      radius: 24.0,
-      backgroundColor: Colors.transparent,
+  List<String> fillModelData()=>[
+    model.position,
+    model.committee,
+    model.department +"-"+model.year.toString(),
+    model.mail,
+    model.phone
+  ];
+  Widget buildDetails({
+  required BuildContext context,
+  required IconData icon,
+  required String text,
+})=>Padding(
+  padding: const EdgeInsets.symmetric(
+      horizontal: 10.0),
+  child:   Row(
+      children: [
+        Icon(
+          icon,
+          color: Colors.grey,
+        ),
+        horizontalDivider(),
+        Text(
+          text,
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
+      ],
     ),
-  );
+);
 
 }

@@ -4,6 +4,7 @@ import 'package:msp_ainshams/data/shared/constants/constants.dart';
 import 'package:msp_ainshams/data/shared/cubit/app_cubit.dart';
 import 'package:msp_ainshams/data/shared/widgets/widgets.dart';
 import 'package:msp_ainshams/layout/cubit/layout_state.dart';
+import 'package:msp_ainshams/modules/crew_screen/cubit/crew_cubit.dart';
 import 'package:msp_ainshams/modules/events_screen/cubit/events_cubit.dart';
 import 'package:msp_ainshams/modules/projects_screen/cubit/projects_cubit.dart';
 
@@ -20,6 +21,8 @@ class MainLayout extends StatelessWidget {
         BlocProvider(create: (context) => EventsCubit()..getAllEvents()),
         BlocProvider(
             create: (context) => ProjectsCubit()..getProjectsFromServer()),
+        BlocProvider(
+            create: (context) => CrewCubit()..getCrewFromServer()),
       ],
       child: BlocConsumer<LayoutCubit, LayoutState>(
         listener: (context, state) {},

@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -15,7 +14,7 @@ class AboutUsScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
+          SizedBox(
             height: MediaQuery.of(context).size.height * 0.29,
             width: double.infinity,
             child: Stack(
@@ -88,10 +87,10 @@ class AboutUsScreen extends StatelessWidget {
 
                 Text('OUR COMMUNITY',style: Theme.of(context).textTheme.bodyText1,),
                 SizedBox(height: MediaQuery.of(context).size.height*0.01,),
-                Container(
+                SizedBox(
                   height: size.height*0.15,
                   child: ListView.separated(
-                      physics: BouncingScrollPhysics(),
+                      physics: const BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context,index)=>buildCommity(size,index),
                       separatorBuilder: (context,index)=> const SizedBox(width: 10,), itemCount: committeesName.length),
@@ -108,7 +107,7 @@ class AboutUsScreen extends StatelessWidget {
 
   Container buildCommity(Size size,int i) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       width: size.width*0.75,
       height: size.height*0.15,
       decoration: BoxDecoration(
@@ -116,9 +115,9 @@ class AboutUsScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),),
       child: Row(
         children: [
-          Text(committeesName[i],style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 20),),
-          Spacer(),
-          Container(
+          Text(committeesName[i],style: const TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 20),),
+          const Spacer(),
+          SizedBox(
             width: 50,
             height: 50,
             child: Image.asset(committeesImages[i]),
@@ -141,7 +140,7 @@ class AboutUsScreen extends StatelessWidget {
                 )));
       },
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 5),
+        margin: const EdgeInsets.symmetric(horizontal: 5),
         height: 40,
         width: 40,
         child: Icon(

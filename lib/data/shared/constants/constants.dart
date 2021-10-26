@@ -39,7 +39,10 @@ List<Color>committeesColor =[
   Colors.cyan.shade400,
   Colors.blueGrey.shade100,
   Colors.blueAccent.shade100,
-  Colors.tealAccent.shade400
+  Colors.tealAccent.shade400,
+  Colors.black,
+  Colors.black,
+  Colors.black,
 ];
 
 /*Const Committees names and images from assets*/
@@ -51,7 +54,10 @@ const List<String> committeesName=[
     "Game",
     "Web",
     "Data Science",
-    "Software Testing"
+    "Software Testing",
+    "PR&Marketing",
+    "HR",
+    "Graphic&Media"
 ];
 
 const List<String>committeesImages=[
@@ -63,6 +69,10 @@ const List<String>committeesImages=[
     "assets/logos/web-logo.png",
     "assets/logos/DataScience-logo.png",
     "assets/logos/testing-logo.jpg",
+    "assets/logos/PR logo.png",
+    "assets/logos/Hr logo.png",
+    "assets/logos/Graphic and media logo.png"
+
 ];
 
 
@@ -113,25 +123,31 @@ String getMonthName({required int month}){
 }
 
 Color getCommitteeColor({required String committee}){
-    switch(committee){
-        case "Flutter":
+    switch(committee.toLowerCase()){
+        case "flutter":
             return committeesColor[0];
-        case "Android":
+        case "android":
             return committeesColor[1];
-        case "Machine Learning":
+        case "machine learning":
             return committeesColor[2];
-        case  "Cyber Security":
+        case  "cyber security":
             return committeesColor[3];
-        case  "Game":
+        case  "game":
             return committeesColor[4];
-        case "Web":
+        case "web":
             return committeesColor[5];
-        case "Data Science":
+        case "data science":
             return committeesColor[6];
-        case  "Software Testing":
+        case  "software testing":
             return committeesColor[7];
+        case "pr&marketing":
+            return committeesColor[8];
+        case "hr":
+            return committeesColor[9];
+        case "graphic&media":
+            return committeesColor[10];
         default:
-            return committeesColor[0];
+            return Colors.red;
     }
 }
 

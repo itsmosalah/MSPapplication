@@ -92,7 +92,7 @@ class ProjectsScreen extends StatelessWidget {
     required ProjectsCubit cubit,
   }) {
     cubit.allCommitteesWidgets = [];
-    for (int i = 0; i < committeesName.length; i++) {
+    for (int i = 0; i < 8; i++) {
       cubit.allCommitteesWidgets.add(
           buildCommitteeContainer(
             context: context,

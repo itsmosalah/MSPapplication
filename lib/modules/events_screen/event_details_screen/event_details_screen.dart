@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:msp_ainshams/data/models/event_model/event_model.dart';
@@ -43,7 +40,7 @@ class EventDetailsScreen extends StatelessWidget {
             child: Container(
               color: Colors.grey,
               child: Image(
-                image: MemoryImage(Uint8List.fromList(utf8.encode(model.img))),
+                image: NetworkImage(model.img),
                 errorBuilder: (context, object, stackTrace) {
                   return Image.asset("assets/images/MSP LOGO WHITE.png");
                 },
