@@ -8,15 +8,16 @@ part 'app_state.dart';
 class AppCubit extends Cubit<AppState> {
   AppCubit() : super(AppInitial());
 
-  static AppCubit get(context)=>BlocProvider.of(context);
+  static AppCubit get(context) => BlocProvider.of(context);
 
   bool? isDark;
 
-  void getAppTheme(){
-    isDark = CacheHelper.getData(key: 'isDark') ?? false;
+  void getAppTheme() {
+    isDark = CacheHelper.getData(key: 'isDark') ?? true;
     emit(AppGetTheme());
   }
-  void changeAppTheme({required bool value}){
+
+  void changeAppTheme({required bool value}) {
     isDark = value;
     CacheHelper.saveData(key: 'isDark', value: value);
     emit(AppChangeTheme());
