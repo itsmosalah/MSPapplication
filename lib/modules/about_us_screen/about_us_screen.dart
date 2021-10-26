@@ -24,7 +24,7 @@ class AboutUsScreen extends StatelessWidget {
                   child: Image.asset('assets/images/cover.png'),
                 ),
                 Positioned(
-                  top: 50,
+                  top: 70,
                   left: 20,
                   child: Text(
                     'About Us',
@@ -85,7 +85,7 @@ class AboutUsScreen extends StatelessWidget {
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height*0.02,),
 
-                Text('OUR COMMUNITY',style: Theme.of(context).textTheme.bodyText1,),
+                Text('OUR COMMITTEES',style: Theme.of(context).textTheme.bodyText1,),
                 SizedBox(height: MediaQuery.of(context).size.height*0.01,),
                 SizedBox(
                   height: size.height*0.15,

@@ -29,25 +29,34 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: Colors.black,
       body: SizedBox(
         width: double.infinity,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Image(
-              image: AssetImage(
-                "assets/images/MSP LOGO bright.png"
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Image(
+                width: 150.0,
+                height: 150.0,
+                image: AssetImage(
+                  "assets/images/MSP LOGO bright.png"
+                ),
               ),
-            ),
-            verticalDivider(),
-            const Text(
-              'MSP - Ain Shams University',
-              style: TextStyle(
+              verticalDivider(),
+              const Text(
+                'MSP - Ain Shams University',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16.0,
+                  fontFamily: "RailWay",
+                ),
+              ),
+              verticalDivider(),
+              const CircularProgressIndicator(
                 color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 16.0,
-                fontFamily: "RailWay",
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
