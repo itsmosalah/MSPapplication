@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:msp_ainshams/data/models/event_model/event_model.dart';
 import 'package:msp_ainshams/data/shared/constants/constants.dart';
+import 'package:msp_ainshams/data/shared/cubit/app_cubit.dart';
 
 // ignore: must_be_immutable
 class EventDetailsScreen extends StatelessWidget {
@@ -115,7 +116,7 @@ class EventDetailsScreen extends StatelessWidget {
                                   left: 10.0
                                 ),
                                 child: Text(
-                                  model.description*50,
+                                  model.description,
                                   style: Theme.of(context).textTheme.subtitle1!.copyWith(
                                     color: Colors.grey,
                                     fontWeight: FontWeight.w500
@@ -175,7 +176,7 @@ class EventDetailsScreen extends StatelessWidget {
                         ),
 
                         const SizedBox(
-                          height: 50.0,
+                          height: 100.0,
                         ),
 
                         Container(
@@ -184,9 +185,9 @@ class EventDetailsScreen extends StatelessWidget {
                           margin: const EdgeInsets.symmetric(
                             horizontal: 25.0
                           ),
-                          decoration: const BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.horizontal(
+                          decoration:  BoxDecoration(
+                            color: AppCubit.get(context).isDark!?Colors.white:Colors.black,
+                            borderRadius:const  BorderRadius.horizontal(
                               left: Radius.circular(5.0),
                               right: Radius.circular(5.0)
                             )
@@ -204,6 +205,9 @@ class EventDetailsScreen extends StatelessWidget {
                         ),
                       ],
                     ),
+                  ),
+                  const SizedBox(
+                    height: 100.0,
                   ),
                 ],
               ),

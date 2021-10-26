@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:msp_ainshams/data/models/project_model/project_model.dart';
 import 'package:msp_ainshams/data/shared/constants/constants.dart';
+import 'package:msp_ainshams/data/shared/cubit/app_cubit.dart';
 import 'package:msp_ainshams/data/shared/network/web_view/web_view.dart';
 
 // ignore: must_be_immutable
@@ -153,9 +154,9 @@ class ProjectDetailsScreen extends StatelessWidget {
                           margin: const EdgeInsets.symmetric(
                               horizontal: 25.0
                           ),
-                          decoration: const BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.horizontal(
+                          decoration: BoxDecoration(
+                              color: AppCubit.get(context).isDark!?Colors.white:Colors.black,
+                              borderRadius: const BorderRadius.horizontal(
                                   left: Radius.circular(5.0),
                                   right: Radius.circular(5.0)
                               )
@@ -173,6 +174,9 @@ class ProjectDetailsScreen extends StatelessWidget {
                         ),
                       ],
                     ),
+                  ),
+                  const SizedBox(
+                    height: 100.0,
                   ),
                 ],
               ),

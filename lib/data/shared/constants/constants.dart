@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:msp_ainshams/data/shared/cubit/app_cubit.dart';
 import 'package:msp_ainshams/data/shared/network/web_view/web_view.dart';
 import 'package:msp_ainshams/modules/about_us_screen/about_us_screen.dart';
 import 'package:msp_ainshams/modules/crew_screen/crew_screen.dart';
@@ -165,16 +166,19 @@ Widget getErrorFromServer({
         (
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-            const Icon(
+            Icon(
                 Icons.system_update_alt_sharp,
                 size: 32.0,
+                color: AppCubit.get(context).isDark!?Colors.white:Colors.black,
             ),
             const SizedBox(
                 height: 20.0,
             ),
             Text(
                 'Failed To Get Data From Sever Please Try Again Later',
-                style: Theme.of(context).textTheme.subtitle2,
+                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                    color: AppCubit.get(context).isDark!?Colors.white:Colors.black,
+                ),
             ),
         ],
     ),

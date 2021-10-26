@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:msp_ainshams/data/models/crew_model/crew_model.dart';
 import 'package:msp_ainshams/data/shared/constants/constants.dart';
+import 'package:msp_ainshams/data/shared/cubit/app_cubit.dart';
 
 
 // ignore: must_be_immutable
@@ -111,7 +112,26 @@ class CrewDetailsScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-
+                        const SizedBox(
+                            height:25.0
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              icons[3],
+                              color: Colors.grey,
+                            ),
+                            horizontalDivider(),
+                            Expanded(
+                              child: Text(
+                                modelData[3],
+                                style: Theme.of(context).textTheme.bodyText1,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
                         const SizedBox(
                             height:25.0
                         ),
@@ -175,9 +195,9 @@ class CrewDetailsScreen extends StatelessWidget {
                           margin: const EdgeInsets.symmetric(
                               horizontal: 25.0
                           ),
-                          decoration: const BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.horizontal(
+                          decoration:  BoxDecoration(
+                              color: AppCubit.get(context).isDark!?Colors.white:Colors.black,
+                              borderRadius: const BorderRadius.horizontal(
                                   left: Radius.circular(5.0),
                                   right: Radius.circular(5.0)
                               )
