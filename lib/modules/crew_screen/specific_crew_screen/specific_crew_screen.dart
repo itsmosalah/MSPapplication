@@ -32,13 +32,14 @@ class SpecificCrewScreen extends StatelessWidget {
     if(model.isEmpty){
       return Center(
         child: Text(
-          'Sorry There\'s no projects yet from this committee ',
+          'Sorry There\'s no crew from this committee ',
           style: Theme.of(context).textTheme.subtitle1,
         ),
       );
     }
     else{
       return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             "Crew",

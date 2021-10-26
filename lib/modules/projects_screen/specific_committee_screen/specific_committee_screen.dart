@@ -39,6 +39,7 @@ class SpecificCommitteeScreen extends StatelessWidget {
     }
     else{
       return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             "All Projects",
