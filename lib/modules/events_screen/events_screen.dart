@@ -19,31 +19,34 @@ class EventsScreen extends StatelessWidget {
         EventsCubit model = EventsCubit.get(context);
 
         if (state is EventLoadingDataFromServer) {
-          return customLoadingData(
-            color: Colors.teal
-          );
+          return customLoadingData(color: Colors.teal);
         } else if (state is EventsGetDataError) {
           return getErrorFromServer(
             context: context,
           );
         } else {
-          return  Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: ListView.separated(
-                  physics: const BouncingScrollPhysics(),
-                  itemBuilder: (context, index) => InkWell(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>EventDetailsScreen(model: model.eventModel[index],)));
-                    },
-                    child: Hero(
-                      tag:model.eventModel[index].id,
-                      child: eventWidget(
-                          model: model.eventModel[index], context: context),
+          return Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: ListView.separated(
+                physics: const BouncingScrollPhysics(),
+                itemBuilder: (context, index) => InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => EventDetailsScreen(
+                                      model: model.eventModel[index],
+                                    )));
+                      },
+                      child: Hero(
+                        tag: model.eventModel[index].id,
+                        child: eventWidget(
+                            model: model.eventModel[index], context: context),
+                      ),
                     ),
-                  ),
-                  separatorBuilder: (context, index) => verticalDivider(),
-                  itemCount: model.eventModel.length),
-            );
+                separatorBuilder: (context, index) => verticalDivider(),
+                itemCount: model.eventModel.length),
+          );
         }
       },
     );
@@ -56,12 +59,15 @@ class EventsScreen extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5.0),
         ),
-        child: Image(
-          image: NetworkImage(imageUrl),
-          errorBuilder: (context, object, stackTrace) {
-            return Image.asset("assets/images/MSP LOGO WHITE.png");
-          },
-          fit: BoxFit.cover,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10.0),
+          child: Image(
+            image: NetworkImage(imageUrl),
+            errorBuilder: (context, object, stackTrace) {
+              return Image.asset("assets/images/MSP LOGO WHITE.png");
+            },
+            fit: BoxFit.cover,
+          ),
         ),
       );
 
@@ -115,81 +121,74 @@ class EventsScreen extends StatelessWidget {
         ],
       );
 
-  Widget eventDateDetails({required model,required context})=>Container(
-    margin: const EdgeInsets.only(right: 20.0),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Text(
-          "${DateTime.parse(model.createdAt).day}",
-          style: Theme.of(context)
-              .textTheme
-              .headline3!
-              .copyWith(color: Colors.white),
-        ),
-        const SizedBox(
-          height: 5.0,
-        ),
-        Text(
-          getMonthName(month: DateTime.parse(model.createdAt).month),
-          style: Theme.of(context)
-              .textTheme
-              .subtitle2!
-              .copyWith(color: Colors.white),
-        ),
-        const SizedBox(
-          height: 5.0,
-        ),
-        Text(
-          DateFormat.Hm().format(DateTime.parse(model.createdAt)),
-          style: Theme.of(context)
-              .textTheme
-              .subtitle2!
-              .copyWith(color: Colors.white),
-        ),
-      ],
-    ),
-  );
-
-  Widget eventContainer({required model,context})=>Container(
-    width: double.infinity,
-    height: 150.0,
-    decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        gradient: LinearGradient(
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-          colors: [
-            Colors.teal.shade400,
-            Colors.teal.shade700,
-            Colors.teal.shade900,
-          ],
-        )),
-    child: ClipRRect(
-      borderRadius: BorderRadius.circular(10.0),
-      child: Row(
-        children: [
-          eventImage(
-            imageUrl: model.img,
-          ),
-          const SizedBox(
-            width: 5.0,
-          ),
-          Expanded(
-            child: eventInfo(
-              context: context,
-              model: model,
+  Widget eventDateDetails({required model, required context}) => Container(
+        margin: const EdgeInsets.only(right: 20.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              "${DateTime.parse(model.createdAt).day}",
+              style: Theme.of(context)
+                  .textTheme
+                  .headline3!
+                  .copyWith(color: Colors.white),
             ),
+            const SizedBox(
+              height: 5.0,
+            ),
+            Text(
+              getMonthName(month: DateTime.parse(model.createdAt).month),
+              style: Theme.of(context)
+                  .textTheme
+                  .subtitle2!
+                  .copyWith(color: Colors.white),
+            ),
+            const SizedBox(
+              height: 5.0,
+            ),
+            Text(
+              DateFormat.Hm().format(DateTime.parse(model.createdAt)),
+              style: Theme.of(context)
+                  .textTheme
+                  .subtitle2!
+                  .copyWith(color: Colors.white),
+            ),
+          ],
+        ),
+      );
+
+  Widget eventContainer({required model, context}) => Container(
+        width: double.infinity,
+        height: 150.0,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.0),
+          color: Colors.teal.shade700,
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10.0),
+          child: Row(
+            children: [
+              eventImage(
+                imageUrl: model.img,
+              ),
+              const SizedBox(
+                width: 5.0,
+              ),
+              Expanded(
+                child: eventInfo(
+                  context: context,
+                  model: model,
+                ),
+              ),
+              eventDateDetails(
+                context: context,
+                model: model,
+              ),
+            ],
           ),
-          eventDateDetails(
-            context: context,
-            model: model,
-          ),
-        ],
-      ),
-    ),
-  );
+        ),
+      );
 
   Widget eventWidget({required EventModel model, required context}) {
     return eventContainer(

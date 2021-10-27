@@ -11,16 +11,18 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   @override
   void initState() {
     super.initState();
     navigateToHome();
   }
 
-  void navigateToHome() async{
-    await Future.delayed(const Duration(milliseconds: 6000),(){});
-    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>const MainLayout()), (route) => false);
+  void navigateToHome() async {
+    await Future.delayed(const Duration(milliseconds: 1500), () {});
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const MainLayout()),
+        (route) => false);
   }
 
   @override
@@ -37,9 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
               const Image(
                 width: 150.0,
                 height: 150.0,
-                image: AssetImage(
-                  "assets/images/MSP LOGO bright.png"
-                ),
+                image: AssetImage("assets/images/MSP LOGO bright.png"),
               ),
               verticalDivider(),
               const Text(

@@ -16,7 +16,7 @@ class ProjectsScreen extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         ProjectsCubit model = ProjectsCubit.get(context);
-        getAllCommittees(context: context,cubit:model);
+        getAllCommittees(context: context, cubit: model);
 
         if (state is GetProjectsFromServerLoading) {
           return customLoadingData(color: Colors.blueAccent);
@@ -48,18 +48,15 @@ class ProjectsScreen extends StatelessWidget {
                     reverse: false,
                     autoPlay: true,
                     autoPlayInterval: const Duration(seconds: 6),
-                    autoPlayAnimationDuration: const Duration(milliseconds: 1800),
+                    autoPlayAnimationDuration:
+                        const Duration(milliseconds: 1800),
                     autoPlayCurve: Curves.fastOutSlowIn,
                     enlargeCenterPage: true,
-                    onPageChanged: (index, reason) {
-
-                    },
+                    onPageChanged: (index, reason) {},
                     scrollDirection: Axis.horizontal,
                   ),
                 ),
-
                 verticalDivider(),
-
                 Text(
                   "All Projects",
                   style: Theme.of(context).textTheme.bodyText1,
@@ -67,18 +64,16 @@ class ProjectsScreen extends StatelessWidget {
                 const SizedBox(
                   height: 25.0,
                 ),
-
                 Expanded(
                   child: ListView.separated(
-                    physics: const BouncingScrollPhysics(),
-                      itemBuilder: (context,index)=>projectContainer(
-                        context: context,
-                        model: model.allProjects[index],
-                      ),
-                      separatorBuilder: (context,index)=>verticalDivider(),
+                      physics: const BouncingScrollPhysics(),
+                      itemBuilder: (context, index) => projectContainer(
+                            context: context,
+                            model: model.allProjects[index],
+                          ),
+                      separatorBuilder: (context, index) => verticalDivider(),
                       itemCount: model.allProjects.length),
                 )
-
               ],
             ),
           );
@@ -93,39 +88,35 @@ class ProjectsScreen extends StatelessWidget {
   }) {
     cubit.allCommitteesWidgets = [];
     for (int i = 0; i < 8; i++) {
-      cubit.allCommitteesWidgets.add(
-          buildCommitteeContainer(
-            context: context,
-            committeeName: committeesName[i],
-            committeeImg: committeesImages[i],
-            committeeColor: committeesColor[i],
-            index:i,
-            model: cubit,
-          )
-      );
+      cubit.allCommitteesWidgets.add(buildCommitteeContainer(
+        context: context,
+        committeeName: committeesName[i],
+        committeeImg: committeesImages[i],
+        committeeColor: committeesColor[i],
+        index: i,
+        model: cubit,
+      ));
     }
   }
 
-  List<ProjectModel> getModel({
-    required int index,
-    required ProjectsCubit model
-  }){
-    switch(index){
+  List<ProjectModel> getModel(
+      {required int index, required ProjectsCubit model}) {
+    switch (index) {
       case 0:
         return model.flutterProjects;
       case 1:
         return model.androidProjects;
       case 2:
         return model.machineLearningProjects;
-      case  3:
+      case 3:
         return model.securityProjects;
-      case  4:
+      case 4:
         return model.gameProjects;
       case 5:
         return model.webProjects;
       case 6:
         return model.dataScienceProjects;
-      case  7:
+      case 7:
         return model.testingProjects;
       default:
         return [];
@@ -141,18 +132,19 @@ class ProjectsScreen extends StatelessWidget {
     required ProjectsCubit model,
   }) =>
       InkWell(
-        onTap: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>SpecificCommitteeScreen(
-              model: getModel(index: index, model: model),
-              committeeName: committeeName
-          )
-          ));
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => SpecificCommitteeScreen(
+                      model: getModel(index: index, model: model),
+                      committeeName: committeeName)));
         },
         child: Container(
           width: 275.0,
           height: 100.0,
           decoration: BoxDecoration(
-            color:committeeColor,
+            color: committeeColor,
             borderRadius: BorderRadius.circular(10.0),
           ),
           child: Padding(
@@ -161,13 +153,11 @@ class ProjectsScreen extends StatelessWidget {
               children: [
                 Text(
                   committeeName,
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .bodyText1!
-                      .copyWith(
-                    color: committeeName=="Web"?Colors.black:Colors.white,
-                  ),
+                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                        color: committeeName == "Web"
+                            ? Colors.black
+                            : Colors.white,
+                      ),
                 ),
                 const Spacer(),
                 Container(
@@ -185,5 +175,4 @@ class ProjectsScreen extends StatelessWidget {
           ),
         ),
       );
-
 }
